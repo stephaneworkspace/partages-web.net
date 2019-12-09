@@ -11,3 +11,11 @@ Cargo.lock
 
 # Data config
 .env
+
+
+#Added by cargo
+#
+#already existing elements were commented out
+
+/target
+#**/*.rs.bk
