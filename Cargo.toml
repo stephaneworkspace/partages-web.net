@@ -1,5 +1,5 @@
 [package]
-name = "paratages_web_net"
+name = "paratages_web"
 version = "0.1.0"
 authors = ["stephaneworkspace <s.bressani@bluewin.ch>"]
 edition = "2018"
@@ -8,3 +8,5 @@ edition = "2018"
 
 [dependencies]
 rocket = "0.4.2"
+diesel = { version = "1.4.3", features = ["postgres"] }
+dotenv = "0.15.0"

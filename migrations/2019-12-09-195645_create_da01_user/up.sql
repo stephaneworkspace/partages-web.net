@@ -1,0 +1,8 @@
+-- Your SQL goes here
+CREATE TABLE da01_user (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  mail VARCHAR NOT NULL,
+  password VARCHAR NOT NULL,
+  active BOOLEAN NOT NULL DEFAULT 'f'
+)
