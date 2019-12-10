@@ -1,15 +1,15 @@
-// use connection::DbConn;
-// use diesel::result::Error;
-// use rocket::http::Status;
+use crate::connection::DbConn;
+use diesel::result::Error;
+use rocket::http::Status;
 // use rocket::response::status;
-// use rocket_contrib::json::Json;
+use rocket_contrib::json::Json;
 // use std::env;
-// use DA01User;
+use crate::backend::repository_da01;
+use crate::backend::DA01User;
 
-/*
 #[get("/")]
 pub fn all(connection: DbConn) -> Result<Json<Vec<DA01User>>, Status> {
-    da01_user::repository::all(&connection)
+    repository_da01::all(&connection)
         .map(|data| Json(data))
         .map_err(|error| error_status(error))
 }
@@ -20,7 +20,7 @@ fn error_status(error: Error) -> Status {
         _ => Status::InternalServerError,
     }
 }
-*/
+
 #[get("/hello-world")]
 pub fn hello_world() -> &'static str {
     "Hello, world!"

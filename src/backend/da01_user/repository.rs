@@ -1,13 +1,12 @@
 #![allow(proc_macro_derive_resolution_fallback)]
-
-// use crate::backend::DA01User;
-// use crate::schema::da01_user;
-// use diesel;
-// use diesel::prelude::*;
-/*
+use crate::backend::DA01User;
+use crate::schema::da01_user;
+use diesel;
+use diesel::prelude::*;
 pub fn all(connection: &PgConnection) -> QueryResult<Vec<DA01User>> {
     da01_user::table.load::<DA01User>(&*connection)
-}*/
+}
+
 /*
 pub fn get(id: i32, connection: &PgConnection) -> QueryResult<Person> {
     people::table.find(id).get_result::<Person>(connection)
