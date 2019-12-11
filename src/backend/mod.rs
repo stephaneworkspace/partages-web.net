@@ -1,4 +1,7 @@
 mod da01_user;
-pub use self::da01_user::{
-    handler as handler_da01, repository as repository_da01, router as router_da01, DA01User,
-};
+mod html;
+mod router;
+
+pub use self::da01_user::{handler as handler_da01, repository as repository_da01, DA01User};
+pub use self::html::handler as handler_html;
+pub use self::router::create_routes;

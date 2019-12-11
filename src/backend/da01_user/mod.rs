@@ -3,7 +3,6 @@ use crate::schema::da01_user;
 
 pub mod handler;
 pub mod repository;
-pub mod router;
 
 #[derive(Queryable, AsChangeset, Serialize, Deserialize)]
 #[table_name = "da01_user"]

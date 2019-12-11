@@ -17,14 +17,7 @@ mod backend;
 mod connection;
 mod schema;
 
-/*
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
-}*/
-
 fn main() {
     dotenv().ok();
-    backend::router_da01::create_routes();
-    //rocket::ignite().mount("/", routes![index]).launch();
+    backend::create_routes();
 }
