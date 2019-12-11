@@ -17,10 +17,40 @@ step:
       echo 'DATABASE_URL=postgres://$(pg-login):$(pg-password)@$(pg-ip)/partages_web
       ROCKET_ADDRESS=localhost
       ROCKER_PORT=8001' >> ./.env
-  # Run cargo build to do
+    displayName: Config db
+  - task: CmdLine@2
+    script: apt-get install curl
+    displayName: Install curl
+  - task: CmdLine@2
+    script: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    displayName: Install rust
+  - task: CmdLine@2
+    script: rustup toolchain install nigthly
+    displayName: Install rust nigthly
+  - task: CmdLine@2
+    script: rustup default nigthly
+    displayName: Switch to rust nigthly
+  - task: CmdLine@2
+    script: cargo install cargo-web
+    displayName: Install cargo-web
+  - task: CmdLine@2
+    script: cargo build --release
+    displayName: Compile
+  - task: CmdLine@2
+    script: rm -rf target-final
+    displayName: Create a final repertory
+  - task: CmdLine@2
+    script: mv ./.env ./target-final
+    displayName: Move config
+  - task: CmdLine@2
+    script: mv ./public/ ./target-final/public/
+    displayName: Move static html backend
+  - task: CmdLine@2
+    script: mv ./target/release/paratages_web ./target-final/serve
+    displayName: Move binary
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: '$(Build.SourcesDirectory)'
+      rootFolderOrFile: '$(Build.SourcesDirectory)/target-final'
       includeRootFolder: false
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/partages_web.zip'
