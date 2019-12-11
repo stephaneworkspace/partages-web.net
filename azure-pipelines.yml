@@ -1,0 +1,41 @@
+# For the moment for test I use master and not release
+# Author: Stéphane Bressani
+# Deploy on azure
+trigger:
+  - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+step:
+  - task: CmdLine@2
+    input: 
+      script:
+        rm -rf ./.env
+  - task: CmdLine@2
+    script: |
+      echo 'DATABASE_URL=postgres://$(pg-login):$(pg-password)@$(pg-ip)/partages_web
+      ROCKET_ADDRESS=localhost
+      ROCKER_PORT=8001' >> ./.env
+  # Run cargo build to do
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: '$(Build.SourcesDirectory)'
+      includeRootFolder: false
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/partages_web.zip'
+      replaceExistingArchive: true
+      verbose: # (no value); this input is optional
+  - task: FtpUpload@2
+    inputs:
+      credentialsOption: 'inputs'
+      serverUrl: '$(ftp-server)'
+      username: '$(ftp-user)'
+      password: '$(ftp-password)'
+      rootDirectory: '$(Build.ArtifactStagingDirectory)'
+      filePatterns: '**'
+      remoteDirectory: '/home/stephane/ftp/build/$(Build.BuildId)/'
+      clean: false
+      cleanContents: false
+      preservePaths: false
+      trustSSL: false
