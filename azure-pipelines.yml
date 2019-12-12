@@ -29,12 +29,12 @@ steps:
     displayName: Install rust
   - task: CmdLine@2
     inputs:
-      script: rustup toolchain install nigthly
-    displayName: Install rust nigthly
+      script: rustup toolchain install nightly
+    displayName: Install rust nightly
   - task: CmdLine@2
     inputs:
-      script: rustup default nigthly
-    displayName: Switch to rust nigthly
+      script: rustup default nightly
+    displayName: Switch to rust nightly
   - task: CmdLine@2
     inputs:
       script: cargo install cargo-web
