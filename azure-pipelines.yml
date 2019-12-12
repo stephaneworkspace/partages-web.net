@@ -8,6 +8,12 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+setup:
+  - bash: |
+      sudo apt-get update &&
+      sudo apt-get -y install postgresql libpq-dev
+    displayName: Install postgresql
+
 steps:
   - task: CmdLine@2
     inputs: 
