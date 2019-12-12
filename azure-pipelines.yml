@@ -2,6 +2,7 @@
 # Author: Stéphane Bressani
 # Deploy on azure
 # For the future -> cargo test --all (build --all ???)
+
 trigger:
   - master
 
