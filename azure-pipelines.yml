@@ -21,9 +21,11 @@ steps:
         ROCKET_ADDRESS=localhost
         ROCKER_PORT=8001' >> ./.env
     displayName: Config db
-  - script: |
-      curl https://sh.rustup.rs -sSf | sh -s -- -y 
-      echo "##vso[task.setvariable variable=PATH;]$PATH:$HOME/.cargo/bin"
+  - task: CmdLine@2
+    inputs:
+      script: |
+        curl https://sh.rustup.rs -sSf | sh -s -- -y 
+        echo "##vso[task.setvariable variable=PATH;]$PATH:$HOME/.cargo/bin"
     displayName: Install rust
   - task: CmdLine@2
     inputs:
