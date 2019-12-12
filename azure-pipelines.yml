@@ -22,8 +22,8 @@ steps:
     inputs:
       script: |
         echo 'DATABASE_URL=postgres://$(pg-login):$(pg-password)@$(pg-ip)/partages_web
-        ROCKET_ADDRESS=localhost
-        ROCKER_PORT=8001' >> ./.env
+        ROCKET_ADDRESS=$(pg-rocket-ip)
+        ROCKER_PORT=8000' >> ./.env
     displayName: Config db
   - task: CmdLine@2
     inputs:
