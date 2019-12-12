@@ -49,14 +49,18 @@ steps:
   - task: CmdLine@2
     inputs:
       script: rm -rf target-final
-    displayName: Create a final repertory
+    displayName: Create a final repertory (rm)
   - task: CmdLine@2
     inputs:
-      script: mv ./.env ./target-final
+      script: mkdir target-final
+    displayName: Create a final repertory (mkdir)
+  - task: CmdLine@2
+    inputs:
+      script: mv ./.env ./target-final/.env
     displayName: Move config
   - task: CmdLine@2
     inputs:
-      script: mv ./public/ ./target-final/public/
+      script: mv ./public/ ./target-final/
     displayName: Move static html backend
   - task: CmdLine@2
     inputs:
