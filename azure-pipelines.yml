@@ -1,6 +1,7 @@
 # For the moment for test I use master and not release
 # Author: Stéphane Bressani
 # Deploy on azure
+# For the future -> cargo test --all (build --all ???)
 trigger:
   - master
 
@@ -20,10 +21,6 @@ steps:
         ROCKET_ADDRESS=localhost
         ROCKER_PORT=8001' >> ./.env
     displayName: Config db
-  - task: CmdLine@2
-    inputs:  
-      script: apt-get install curl
-    displayName: Install curl
   - task: CmdLine@2
     inputs:
       script: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
