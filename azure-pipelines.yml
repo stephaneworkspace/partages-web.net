@@ -12,6 +12,7 @@ step:
     input: 
       script:
         rm -rf ./.env
+    displayName: Remove env file (if exist)
   - task: CmdLine@2
     script: |
       echo 'DATABASE_URL=postgres://$(pg-login):$(pg-password)@$(pg-ip)/partages_web
@@ -59,7 +60,7 @@ step:
   - task: FtpUpload@2
     inputs:
       credentialsOption: 'inputs'
-      serverUrl: '$(ftp-server)'
+      serverUrl: 'ftp://$(ftp-ip)'
       username: '$(ftp-user)'
       password: '$(ftp-password)'
       rootDirectory: '$(Build.ArtifactStagingDirectory)'
