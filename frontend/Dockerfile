@@ -3,6 +3,10 @@ RUN apt-get -y update && apt-get install -y git
 RUN yarn global add @vue/cli
 WORKDIR /frontend
 COPY package*.json ./
+COPY babel.config.js ./
+COPY .browserslistrc ./
+COPY tslint.json ./
+COPY tsconfig.json ./
 RUN yarn install
 COPY public ./public
 COPY src ./src
