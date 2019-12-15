@@ -65,7 +65,7 @@ steps:
     displayName: Move static html backend
   - task: CmdLine@2
     inputs:
-      script: mv ./target/release/partages_web ./target-final/serve
+      script: mv ./target/release/main ./target-final/serve
     displayName: Move binary
   - task: ArchiveFiles@2
     inputs:
