@@ -45,7 +45,7 @@ steps:
     displayName: Install cargo-web
   - task: CmdLine@2
     inputs:
-      script: cargo build --release
+      script: cargo build --release --bin main
     displayName: Compile
   - task: CmdLine@2
     inputs:
@@ -65,7 +65,7 @@ steps:
     displayName: Move static html backend
   - task: CmdLine@2
     inputs:
-      script: mv ./target/release/paratages_web ./target-final/serve
+      script: mv ./target/release/partages_web ./target-final/serve
     displayName: Move binary
   - task: ArchiveFiles@2
     inputs:

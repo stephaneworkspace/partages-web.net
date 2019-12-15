@@ -1,5 +1,5 @@
 [package]
-name = "paratages_web"
+name = "partages_web"
 version = "0.1.0"
 authors = ["stephaneworkspace <s.bressani@bluewin.ch>"]
 edition = "2018"
