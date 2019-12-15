@@ -6,14 +6,21 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "main"
+path = "src/main.rs"
+
 [dependencies]
+# Server
 rocket = "0.4.2"
 diesel = { version = "1.4.3", features = ["postgres"] }
-dotenv = "0.15.0"
+# Db
 r2d2 = "0.8.7"
 r2d2-diesel = "1.0.0"
 rocket_contrib = "0.4.2"
-# upgrade in future
+# Sys
+dotenv = "0.15.0"
+# Json (upgrade in future)
 serde = "1.0.82"
 serde_derive = "1.0.82"
 serde_json = "1.0.33"
