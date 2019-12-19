@@ -1,11 +1,11 @@
+use crate::backend::repository_da01;
+use crate::backend::DA01User;
 use crate::connection::DbConn;
 use diesel::result::Error;
 use rocket::http::Status;
-// use rocket::response::status;
+use rocket::response::status;
 use rocket_contrib::json::Json;
-// use std::env;
-use crate::backend::repository_da01;
-use crate::backend::DA01User;
+use std::env;
 
 #[get("/")]
 pub fn all(connection: DbConn) -> Result<Json<Vec<DA01User>>, Status> {
@@ -33,27 +33,27 @@ pub fn get(id: i32, connection: DbConn) -> Result<Json<Person>, Status> {
         .map(|person| Json(person))
         .map_err(|error| error_status(error))
 }
-
-#[post("/", format = "application/json", data = "<person>")]
+*/
+#[post("/", format = "application/json", data = "<da01>")]
 pub fn post(
-    person: Json<Person>,
+    da01: Json<DA01User>,
     connection: DbConn,
-) -> Result<status::Created<Json<Person>>, Status> {
-    people::repository::insert(person.into_inner(), &connection)
-        .map(|person| person_created(person))
+) -> Result<status::Created<Json<DA01User>>, Status> {
+    repository_da01::insert(da01.into_inner(), &connection)
+        .map(|da01| da01_created(da01))
         .map_err(|error| error_status(error))
 }
 
-fn person_created(person: Person) -> status::Created<Json<Person>> {
+fn da01_created(da01: DA01User) -> status::Created<Json<DA01User>> {
     status::Created(
         format!(
             "{host}:{port}/people/{id}",
             host = host(),
             port = port(),
-            id = person.id
+            id = da01.id
         )
         .to_string(),
-        Some(Json(person)),
+        Some(Json(da01)),
     )
 }
 
@@ -64,7 +64,7 @@ fn host() -> String {
 fn port() -> String {
     env::var("ROCKET_PORT").expect("ROCKET_PORT must be set")
 }
-
+/*
 #[put("/<id>", format = "application/json", data = "<person>")]
 pub fn put(id: i32, person: Json<Person>, connection: DbConn) -> Result<Json<Person>, Status> {
     people::repository::update(id, person.into_inner(), &connection)

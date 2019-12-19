@@ -11,13 +11,13 @@ pub fn all(connection: &PgConnection) -> QueryResult<Vec<DA01User>> {
 pub fn get(id: i32, connection: &PgConnection) -> QueryResult<Person> {
     people::table.find(id).get_result::<Person>(connection)
 }
-
-pub fn insert(person: Person, connection: &PgConnection) -> QueryResult<Person> {
-    diesel::insert_into(people::table)
-        .values(&InsertablePerson::from_person(person))
+*/
+pub fn insert(da01: DA01User, connection: &PgConnection) -> QueryResult<DA01User> {
+    diesel::insert_into(da01_user::table)
+        .values(&InsertableDA01User::from_da01(da01))
         .get_result(connection)
 }
-
+/*
 pub fn update(id: i32, person: Person, connection: &PgConnection) -> QueryResult<Person> {
     diesel::update(people::table.find(id))
         .set(&person)
@@ -28,26 +28,23 @@ pub fn delete(id: i32, connection: &PgConnection) -> QueryResult<usize> {
     diesel::delete(people::table.find(id))
         .execute(connection)
 }
-
+*/
 #[derive(Insertable)]
 #[table_name = "da01_user"]
-struct InsertablePerson {
-    first_name: String,
-    last_name: String,
-    age: i32,
-    profession: String,
-    salary: i32,
+struct InsertableDA01User {
+    name: String,
+    mail: String,
+    password: String,
+    active: bool,
 }
 
-impl InsertablePerson {
-
-    fn from_person(person: Person) -> InsertablePerson {
-        InsertablePerson {
-            first_name: person.first_name,
-            last_name: person.last_name,
-            age: person.age,
-            profession: person.profession,
-            salary: person.salary,
+impl InsertableDA01User {
+    fn from_da01(da01: DA01User) -> InsertableDA01User {
+        InsertableDA01User {
+            name: da01.name,
+            mail: da01.mail,
+            password: da01.password, // to do better
+            active: da01.active,
         }
     }
-}*/
+}

@@ -9,7 +9,11 @@ pub fn create_routes() {
         .manage(connection::init_pool())
         .mount(
             "/api/da01_user",
-            routes![handler_da01::all, handler_da01::hello_world,],
+            routes![
+                handler_da01::all,
+                handler_da01::hello_world,
+                handler_da01::post
+            ],
         )
         .mount("/api/db01_quote", routes![handler_db01::all])
         .mount("/", routes![handler_html::index, handler_html::all])

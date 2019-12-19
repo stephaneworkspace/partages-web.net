@@ -10,6 +10,10 @@ edition = "2018"
 name = "main"
 path = "src/main.rs"
 
+[[bin]]
+name = "seed"
+path = "src/seed.rs"
+
 [dependencies]
 # Server
 rocket = "0.4.2"
