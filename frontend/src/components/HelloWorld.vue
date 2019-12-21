@@ -70,7 +70,9 @@
     <h3>Essential Links</h3>
     <ul>
       <li>
-        <a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a>
+        <a href="https://vuejs.org" target="_blank" rel="noopener">
+          Core Docs
+        </a>
       </li>
       <li>
         <a href="https://forum.vuejs.org" target="_blank" rel="noopener"
@@ -88,7 +90,9 @@
         >
       </li>
       <li>
-        <a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a>
+        <a href="https://news.vuejs.org" target="_blank" rel="noopener">
+          News
+        </a>
       </li>
     </ul>
     <h3>Ecosystem</h3>
@@ -99,7 +103,9 @@
         >
       </li>
       <li>
-        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
+        <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">
+          vuex
+        </a>
       </li>
       <li>
         <a
@@ -127,7 +133,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
 export default class HelloWorld extends Vue {
